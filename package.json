@@ -1,0 +1,50 @@
+{
+  "name": "async-generator",
+  "version": "0.0.1",
+  "description": "A helper to create async generators",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp build",
+    "prepublish": "typings install && npm run build",
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eggers/async-generator.git"
+  },
+  "keywords": [
+    "async",
+    "await",
+    "yield",
+    "yield*",
+    "generator",
+    "iterator",
+    "iterable",
+    "observable",
+    "typescript",
+    "babel",
+    "es6",
+    "es7"
+  ],
+  "author": "Jacob Eggers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eggers/async-generator/issues"
+  },
+  "homepage": "https://github.com/eggers/async-generator#readme",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.2.0",
+    "chai": "^3.4.1",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.9.2",
+    "merge2": "^0.3.6",
+    "mocha": "^2.3.4",
+    "ts-node": "^0.5.4",
+    "typescript": "^1.8.0-dev.20151128"
+  }
+}
