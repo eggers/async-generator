@@ -4,11 +4,11 @@
     "noImplicitAny": true,
     "rootDir": "src",
     "moduleResolution": "node",
-    "declaration": true,
     "noEmit": true
   },
   "exclude": [
     "node_modules",
+    "test",
     "lib",
     "typings",
     "doc"

@@ -1,5 +1,6 @@
 # Compiled Files
 lib
+.test
 
 # TypeScript .d.ts files
 typings
@@ -7,3 +8,5 @@ typings
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+.*.swp

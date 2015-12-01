@@ -6,8 +6,16 @@ A couple helper functions to bring async support to ES6 generators today:
 
 * `asyncIterator`: Converts `Promise<T[]>` to `Promise<T>[]`.
 * `asyncPager`: Creates a generator function will iterate through a paging function.
+* `wrapObservable`: Creates a generator function by wrapping an observable.
+
+```
+npm install async-generator
+```
+
 
 ## Examples
+
+You'll need to include a polyfill for the regeneratorRuntime such as [babel-polyfill](https://babeljs.io/docs/usage/polyfill/)
 
 #### `asyncIterator`: Converts `Promise<T[]>` to `Promise<T>[]`.
 ```typescript
@@ -37,6 +45,24 @@ async function getPage(pageNumber: number) {
 }
 
 for (let promise of asyncPager(getPage)) {
+  const value: number = await promise;
+
+  // value will be undefined if any page is empty.
+  if (value !== undefined) {
+    doSomething(value);
+  }
+}
+```
+
+#### `wrapObservable`: Wraps an Observable with an iterator
+
+```typescript
+import {wrapObservable} from 'async-generator';
+
+// data consumer
+const observable = ...;
+
+for (let promise of wrapObservable(observable)) {
   const value: number = await promise;
 
   // value will be undefined if any page is empty.

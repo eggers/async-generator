@@ -1,5 +1,5 @@
 'use strict';
-require('ts-node/register');
+require('babel-polyfill');
 
 var gulp = require('gulp');
 
@@ -8,25 +8,28 @@ var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge2');
 var tsc = require('gulp-typescript');
+var tslint = require('gulp-tslint');
 var mocha = require('gulp-mocha');
+var path = require('path');
 
 var tsProject = tsc.createProject('tsconfig.json', {
   typescript: require('typescript'),
+  noEmit: false,
   declaration: true
 });
 
 gulp.task('clean', function() {
-  return del('lib');
+  return del(path.join('lib', '.test'));
 });
 
 gulp.task('lint', function(){
-  return gulp.src('src/**/*.ts')
+  return gulp.src(['src/**/*.ts', 'test/**/*.ts'])
   .pipe(tslint())
   .pipe(tslint.report('verbose'));
 });
 
 gulp.task('build', ['clean'], function() {
-  var stream = gulp.src(['src/index.ts'])
+  var stream = gulp.src(['src/*.ts'])
   .pipe(sourcemaps.init())
   .pipe(tsc(tsProject));
 
@@ -39,12 +42,21 @@ gulp.task('build', ['clean'], function() {
 
 });
 
+gulp.task('test.build', ['build'], function() {
+  var stream = gulp.src(['test/*.spec.ts'])
+  .pipe(sourcemaps.init())
+  .pipe(tsc(tsProject));
 
-gulp.task('test', function() {
-  var stream = gulp.src(['src/**/*.spec.ts'])
+  return stream.js.pipe(babel())
+    .pipe(sourcemaps.write('.test'))
+    .pipe(gulp.dest('.test'));
+});
+
+gulp.task('test', ['test.build'], function() {
+  return gulp.src(['.test/**/*.spec.js'])
   .pipe(mocha());
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['build', 'test']);
+gulp.task('default', ['lint', 'test']);
 
