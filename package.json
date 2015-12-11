@@ -48,7 +48,8 @@
     "merge2": "^0.3.6",
     "rx-lite": "^4.0.7",
     "tslint": "^3.1.0-dev.1",
-    "typescript": "^1.7.3"
+    "typescript": "^1.7.3",
+    "typings": "^0.3.1"
   },
   "dependencies": {
     "babel-runtime": "^6.3.13"

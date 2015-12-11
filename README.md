@@ -1,4 +1,4 @@
-# Async Generator
+# Async Generator [![Build Status](https://travis-ci.org/eggers/async-generator.svg)](https://travis-ci.org/eggers/async-generator)
 
 Motivated by the Async Generator ES7 proposal https://github.com/jhusain/asyncgenerator
 
