@@ -1,4 +1,4 @@
-# Async Generator [![Build Status](https://travis-ci.org/eggers/async-generator.svg)](https://travis-ci.org/eggers/async-generator)
+# Async Generator [![Build Status](https://travis-ci.org/eggers/async-generator.svg)](https://travis-ci.org/eggers/async-generator) [![bitHound Overalll Score](https://www.bithound.io/github/eggers/async-generator/badges/score.svg)](https://www.bithound.io/github/eggers/async-generator)
 
 Motivated by the Async Generator ES7 proposal https://github.com/jhusain/asyncgenerator
 
